@@ -1,0 +1,49 @@
+/* HOME */
+.page {
+  height: 100vh;
+  width: 100vw;
+}
+.center-page img {
+  width: 100vw;
+  height: 630px;
+  object-fit: cover;
+}
+
+.product-image {
+  width: 195px;
+  height: 290px;
+  object-fit: cover;
+}
+
+.container {
+  width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-top: 30px;
+}
+
+.offer {
+  display: flex;
+  flex-direction: column;
+}
+
+.offer-info {
+  color: #919191;
+  font-size: 12px;
+  font-family: "Montserrat", sans-serif;
+  padding-top: 3px;
+  padding-bottom: 2px;
+}
+
+.price {
+  font-size: 13px;
+  font-family: "Montserrat", sans-serif;
+  padding-top: 5px;
+}
+
+.hidden {
+  display: none;
+}
