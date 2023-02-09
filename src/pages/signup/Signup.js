@@ -2,6 +2,7 @@
 import Cookies from "js-cookie";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   //Signup input states
@@ -23,6 +24,9 @@ const Signup = () => {
     setPassword(event.target.value);
   };
 
+  // Navigate
+  const navigate = useNavigate();
+
   const fetchData = async () => {
     try {
       const response = await axios.post(
@@ -37,6 +41,9 @@ const Signup = () => {
       console.log(response.data.token);
       const token = response.data.token;
       Cookies.set("token", token, { expires: 10 });
+      if (token) {
+        navigate("/login");
+      }
     } catch (error) {
       console.log(error.response);
       // add error.message above ^
