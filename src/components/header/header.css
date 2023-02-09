@@ -23,7 +23,7 @@ input {
 }
 
 input::placeholder {
-  font-family: "Montserrat", sans-serif;
+  font-family: "MaisonNeue", sans-serif;
   font-size: 14px;
 }
 
@@ -31,8 +31,8 @@ button {
   width: 115px;
   height: 30px;
   border-radius: 5px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 11px;
+  font-family: "MaisonNeue", sans-serif;
+  font-size: 12px;
 }
 
 .blue {

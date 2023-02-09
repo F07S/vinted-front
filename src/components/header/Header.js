@@ -1,5 +1,8 @@
 import "./header.css";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const Header = () => {
+  // const loop = <FontAwesomeIcon icon="magnifying-glass" />;
   return (
     <div className="header">
       <img

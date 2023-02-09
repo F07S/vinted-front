@@ -1,0 +1,104 @@
+.product-container {
+  background-color: #ebedee;
+  height: 100vh;
+}
+
+.product-box {
+  width: 1240px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
+  padding-top: 50px;
+}
+
+.product-img {
+  width: 450px;
+  height: 600px;
+  object-fit: cover;
+}
+
+.product-info {
+  width: 400px;
+  height: 520px;
+  background-color: white;
+  padding: 40px;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  object-fit: cover;
+}
+
+.prod-price {
+  font-size: 24px;
+  font-family: "MaisonNeue", sans-serif;
+  padding-top: 5px;
+}
+
+.tag-section {
+  margin-top: 30px;
+}
+
+.tag-section div {
+  display: flex;
+}
+.tags {
+  width: 180px;
+  font-size: 14px;
+  font-family: "MaisonNeue", sans-serif;
+  line-height: 12px;
+  color: #999999;
+  padding-bottom: 5px;
+  margin-right: 20px;
+}
+
+.tag-info {
+  font-size: 14px;
+  font-family: "MaisonNeue", sans-serif;
+  font-weight: bold;
+  line-height: 12px;
+  color: #666666;
+}
+
+.prod-name {
+  margin-top: 100px;
+  font-family: "MaisonNeue", sans-serif;
+  font-weight: bold;
+}
+
+.prod-desc {
+  margin-top: 25px;
+  font-family: "MaisonNeue", sans-serif;
+  font-size: 15px;
+  color: #666666;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+  gap: 10px;
+}
+
+.user-name {
+  font-family: "MaisonNeue", sans-serif;
+  font-size: 15px;
+}
+
+.buy-button {
+  display: flex;
+  justify-content: center;
+}
+
+.buy-button button {
+  font-family: "MaisonNeue", sans-serif;
+  font-size: 16px;
+  background-color: #42b1ba;
+  color: white;
+  border: none;
+  margin-top: 40px;
+  width: 385px;
+  height: 35px;
+}
