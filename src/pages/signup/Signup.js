@@ -1,15 +1,17 @@
 //COOKIES
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Signup = ({ handleToken }) => {
   //Signup input states
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsLetter] = useState(false);
+
+  const [errorMessage, setErrorMessage] = useState("");
 
   //   const [data, setData] = useState();
 
@@ -27,7 +29,8 @@ const Signup = () => {
   // Navigate
   const navigate = useNavigate();
 
-  const fetchData = async () => {
+  const handleSubmit = async () => {
+    setErrorMessage("");
     try {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
@@ -40,13 +43,23 @@ const Signup = () => {
       );
       console.log(response.data.token);
       const token = response.data.token;
-      Cookies.set("token", token, { expires: 10 });
+
       if (token) {
-        navigate("/login");
+        // Cookies.set("token", token, { expires: 10 });
+        handleToken(token);
+        navigate("/");
       }
     } catch (error) {
-      console.log(error.response);
-      // add error.message above ^
+      console.log(error.response.data);
+      console.log(error.response.status);
+      if (error.response.data.message === "This email already has an account") {
+        setErrorMessage(
+          "Cet email est déjà utilisé, veuillez créer un compte avec un mail valide."
+        );
+      }
+      if (error.response.data.message === "Missing parameters") {
+        setErrorMessage("Veuillez remplir tous les champs svp.");
+      }
     }
   };
 
@@ -54,7 +67,7 @@ const Signup = () => {
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        fetchData();
+        handleSubmit();
       }}
     >
       <div className="signup-container">
@@ -69,7 +82,7 @@ const Signup = () => {
           />
           <input
             className="input-box"
-            type="text"
+            type="email"
             placeholder="Email"
             onChange={handleEmailChange}
             value={email}
@@ -84,9 +97,10 @@ const Signup = () => {
           <div className="check-container">
             <input
               className="check"
+              checked={newsletter}
               type="checkbox"
               onClick={() => {
-                setNewsLetter(true);
+                setNewsLetter(!newsletter);
               }}
             />
             <span>S'inscrire à notre newsletter</span>
@@ -97,6 +111,7 @@ const Signup = () => {
             avoir au moins 18 ans.
           </p>
           <button>S'inscrire</button>
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
           <span
             className="connect-here"
             onClick={() => {

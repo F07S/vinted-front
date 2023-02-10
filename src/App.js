@@ -5,6 +5,9 @@ import "./pages/offer/Offer.css";
 import "./pages/signup/Signup.css";
 import "./pages/login/Login.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+//COOKIES
+import Cookies from "js-cookie";
 
 // PAGES
 import Home from "./pages/home/Home";
@@ -23,18 +26,33 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 library.add(faMagnifyingGlass);
 
-//COOKIES
-// import Cookies from "js-cookie";
-
 function App() {
+  const [token, setToken] = useState(Cookies.get("token") || null);
+
+  const handleToken = (token) => {
+    if (token) {
+      setToken(token);
+      Cookies.set("token", token, { expires: 10 });
+    } else {
+      setToken(null);
+      Cookies.remove("token");
+    }
+  };
+
   return (
     <Router>
-      <Header />
+      <Header handleToken={handleToken} token={token} />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/offer/:id" element={<Offer />}></Route>
-        <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/login" element={<Login />}></Route>
+        <Route
+          path="/signup"
+          element={<Signup handleToken={handleToken} />}
+        ></Route>
+        <Route
+          path="/login"
+          element={<Login handleToken={handleToken} />}
+        ></Route>
       </Routes>
     </Router>
   );

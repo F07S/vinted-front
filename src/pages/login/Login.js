@@ -1,12 +1,14 @@
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ handleToken }) => {
   //Login input states
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [errorMessage, setErrorMessage] = useState("");
 
   // onChange Input Handlers
   const handleEmailChange = (event) => {
@@ -19,7 +21,7 @@ const Login = () => {
   // Navigate
   const navigate = useNavigate();
 
-  const fetchData = async () => {
+  const handleLogin = async () => {
     try {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/login",
@@ -30,13 +32,21 @@ const Login = () => {
       );
       console.log(response.data.token);
       const token = response.data.token;
-      Cookies.set("token", token, { expires: 10 });
+
       if (token) {
+        // Cookies.set("token", token, { expires: 10 });
+        handleToken(token);
         navigate("/");
       }
     } catch (error) {
-      console.log(error.response);
-      // add error.message above ^
+      console.log(error.response.data);
+      console.log(error.response.status);
+
+      if (error.response.data.message === "Unauthorized") {
+        setErrorMessage(
+          "L'email et/ou le mot de passe sont erronés. Veuillez réessayer"
+        );
+      }
     }
   };
 
@@ -44,27 +54,28 @@ const Login = () => {
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        fetchData();
+        handleLogin();
       }}
     >
       <div className="login-container">
         <div className="login-box">
           <h1>Se connecter</h1>
           <input
-            type="text"
+            type="email"
             placeholder="Adresse email"
             className="input-tab"
             onChange={handleEmailChange}
             value={email}
           />
           <input
-            type="text"
+            type="password"
             placeholder="Mot de passe"
             className="input-tab"
             onChange={handlePasswordChange}
             value={password}
           />
           <button>Se connecter</button>
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
           <span
             className="signup-here"
             onClick={() => {
