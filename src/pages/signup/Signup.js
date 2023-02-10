@@ -97,7 +97,12 @@ const Signup = () => {
             avoir au moins 18 ans.
           </p>
           <button>S'inscrire</button>
-          <span className="connect-here">
+          <span
+            className="connect-here"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
             Tu as déja un compte ? Connecte-toi !
           </span>
         </div>

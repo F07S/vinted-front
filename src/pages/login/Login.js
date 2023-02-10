@@ -65,7 +65,12 @@ const Login = () => {
             value={password}
           />
           <button>Se connecter</button>
-          <span className="signup-here">
+          <span
+            className="signup-here"
+            onClick={() => {
+              navigate("/signup");
+            }}
+          >
             Pas encore de compte ? Inscris-toi!
           </span>
         </div>
