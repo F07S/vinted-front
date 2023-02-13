@@ -4,6 +4,7 @@
   width: 100vw;
   height: 70px;
   display: flex;
+  font-family: "MaisonNeue", sans-serif;
   justify-content: center;
   align-items: center;
   gap: 20px;
@@ -22,6 +23,17 @@
   outline: none;
 }
 
+.price-input {
+  width: 60px;
+  height: 32px;
+  background-color: #f5f6f7;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  margin-left: 20px;
+  text-align: center;
+}
+
 input::placeholder {
   font-family: "MaisonNeue", sans-serif;
   font-size: 14px;
@@ -33,6 +45,38 @@ button {
   border-radius: 5px;
   font-family: "MaisonNeue", sans-serif;
   font-size: 12px;
+}
+
+.price-order-desactive {
+  width: 40px;
+  height: 30px;
+  border-radius: 50px;
+  font-family: "MaisonNeue", sans-serif;
+  font-size: 12px;
+  background-color: white;
+  border: 1px solid #42b1ba;
+  color: #42b1ba;
+  margin-left: 20px;
+}
+
+.price-order-desactive:hover {
+  background-color: #f5f6f7;
+}
+
+.price-order-active {
+  width: 40px;
+  height: 30px;
+  border-radius: 50px;
+  font-family: "MaisonNeue", sans-serif;
+  font-size: 12px;
+  background-color: #42b1ba;
+  color: white;
+  border: none;
+  margin-left: 20px;
+}
+
+.euro {
+  padding-left: 5px;
 }
 
 .blue {

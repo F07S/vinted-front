@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 import OfferCard from "../../components/offercard/OfferCard";
 
-const Home = () => {
+const Home = ({ search, priceMin, priceMax, priceAsc, priceDesc }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -11,10 +11,13 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${priceAsc}${priceDesc}`
+          // add the other queries after ${search} within the url AND in the tab below
         );
-        // console.log(response.data);
+        console.log(priceAsc);
+        console.log(response.data);
         setData(response.data);
+
         setIsLoading(false);
       } catch (error) {
         console.log(error.response);
@@ -22,7 +25,8 @@ const Home = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [search, priceMin, priceMax, priceAsc, priceDesc]);
+
   return (
     <div className="page">
       <div className="center-page">
@@ -39,6 +43,7 @@ const Home = () => {
             const id = elem._id;
             // console.log(elem);
             // console.log(elem.owner.account.avatar.url);
+            console.log(search);
             return <OfferCard elem={elem} key={elem._id} id={id} />;
           })
         )}
