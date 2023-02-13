@@ -1,11 +1,17 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+
+//Component
 import OfferCard from "../../components/offercard/OfferCard";
 
 const Home = ({ search, priceMin, priceMax, priceAsc, priceDesc }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const token = Cookies.get("token");
+  // Navigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,10 +36,30 @@ const Home = ({ search, priceMin, priceMax, priceAsc, priceDesc }) => {
   return (
     <div className="page">
       <div className="center-page">
-        <img
-          src="https://static.vinted.com/assets/seller-promotion/gender_test/c/banner-wide-96cebf41372b8de2d64b7e609f0fb2d3c3084f8df0f861fa8b3782231e5c31f8.jpg"
-          alt=""
-        />
+        <div className="center-container">
+          <div className="center-box">
+            <h3>Prêts à faire du tri dans vos placards ?</h3>
+            {token ? (
+              <button
+                className="center-button"
+                onClick={() => {
+                  navigate("/publish");
+                }}
+              >
+                Commencer à vendre
+              </button>
+            ) : (
+              <button
+                className="center-button"
+                onClick={() => {
+                  navigate("/signup");
+                }}
+              >
+                Commencer à vendre
+              </button>
+            )}
+          </div>
+        </div>
       </div>
       <div className="container">
         {isLoading === true ? (

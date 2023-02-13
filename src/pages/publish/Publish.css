@@ -1,0 +1,88 @@
+.publish-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "MaisonNeue", sans-serif;
+  background-color: #ebedee;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+.publish-page h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  margin-top: 50px;
+}
+
+.publish-page .titles {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 30px;
+}
+
+.publish-page .titles div {
+  height: 50px;
+  padding-top: 20px;
+  border-bottom: 1px solid #ebedee;
+}
+.publish-page .input {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.publish-page .input input {
+  height: 70px;
+  outline: none;
+  border-bottom: 1px solid #ebedee;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.publish-page .upload-container input {
+  width: 1280px;
+  height: 50px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.publish-page .info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.check-box-container {
+  display: flex;
+  align-items: center;
+}
+
+.button-container button {
+  font-family: "MaisonNeue", sans-serif;
+  font-size: 15px;
+  background-color: #42b1ba;
+  color: white;
+  border: none;
+  margin-top: 20px;
+}
+
+.price-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.price-container .input input {
+  height: 98px;
+}

@@ -4,6 +4,7 @@ import "./pages/home/Home.css";
 import "./pages/offer/Offer.css";
 import "./pages/signup/Signup.css";
 import "./pages/login/Login.css";
+import "./pages/publish/Publish.css";
 
 // ROUTER
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -19,6 +20,7 @@ import Home from "./pages/home/Home";
 import Offer from "./pages/offer/Offer";
 import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
+import Publish from "./pages/publish/Publish";
 
 // COMPONENTS
 import Header from "./components/header/Header";
@@ -76,6 +78,7 @@ function App() {
           path="/"
           element={
             <Home
+              token={token}
               search={search}
               setSearch={setSearch}
               priceMin={priceMin}
@@ -94,6 +97,7 @@ function App() {
           path="/login"
           element={<Login handleToken={handleToken} />}
         ></Route>
+        <Route path="/publish" element={<Publish token={token} />}></Route>
       </Routes>
     </Router>
   );

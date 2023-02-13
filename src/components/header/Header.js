@@ -114,7 +114,25 @@ const Header = ({
         </>
       )}
 
-      <button className="vendre">Vends tes articles</button>
+      {token ? (
+        <button
+          className="vendre"
+          onClick={() => {
+            navigate("/publish");
+          }}
+        >
+          Vends tes articles
+        </button>
+      ) : (
+        <button
+          className="vendre"
+          onClick={() => {
+            navigate("/signup");
+          }}
+        >
+          Vends tes articles
+        </button>
+      )}
     </div>
   );
 };
