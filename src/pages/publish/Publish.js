@@ -1,5 +1,7 @@
+import { Navigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Publish = ({ token }) => {
   // USESTATES
@@ -13,9 +15,9 @@ const Publish = ({ token }) => {
   const [condition, setCondition] = useState("");
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
-  // const [exchange, setExchange] = useState(false);
+  const [exchange, setExchange] = useState(false);
 
-  return (
+  return token ? (
     <div className="publish-page">
       <form
         onSubmit={async (event) => {
@@ -51,7 +53,16 @@ const Publish = ({ token }) => {
       >
         <h1>Vends ton article</h1>
         <div className="upload-container">
+          {!picture && (
+            <label htmlFor="file">
+              {" "}
+              <FontAwesomeIcon icon="plus" /> Ajoute une image
+            </label>
+          )}
+
           <input
+            id="file"
+            style={{ display: "none" }}
             type="file"
             onChange={(event) => {
               setPicture(event.target.files[0]);
@@ -159,7 +170,7 @@ const Publish = ({ token }) => {
               type="text"
               placeholder="0,00€"
             />{" "}
-            {/* <div className="check-box-container">
+            <div className="check-box-container">
               <input
                 type="checkbox"
                 checked={exchange}
@@ -168,14 +179,16 @@ const Publish = ({ token }) => {
                 }}
               />
               <span>Je suis intéressé(e) par les échanges</span>
-            </div> */}
+            </div>
           </div>
         </div>
+        <div className="button-container">
+          <button type="submit">Ajouter</button>
+        </div>
       </form>
-      <div className="button-container">
-        <button type="submit">Ajouter</button>
-      </div>
     </div>
+  ) : (
+    <Navigate to="/login" />
   );
 };
 export default Publish;
