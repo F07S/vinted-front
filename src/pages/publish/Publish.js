@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 import axios from "axios";
 
 const Publish = ({ token }) => {
   // USESTATES
   const [picture, setPicture] = useState();
-  const [imgToDisplay, setImgToDisplay] = useState();
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
@@ -15,7 +16,7 @@ const Publish = ({ token }) => {
   const [price, setPrice] = useState("");
   const [exchange, setExchange] = useState(false);
 
-  return (
+  return token ? (
     <div className="publish-page">
       <form
         onSubmit={async (event) => {
@@ -43,7 +44,6 @@ const Publish = ({ token }) => {
               }
             );
             console.log(response);
-            setImgToDisplay(response.data);
           } catch (error) {
             console.log(error.message);
           }
@@ -59,7 +59,13 @@ const Publish = ({ token }) => {
             }}
           />
 
-          {imgToDisplay && <img src={imgToDisplay.secure_url} alt="" />}
+          {picture && (
+            <img
+              className="upload-img"
+              src={URL.createObjectURL(picture)}
+              alt=""
+            />
+          )}
         </div>
         <div className="info-container">
           <div className="titles">
@@ -171,6 +177,8 @@ const Publish = ({ token }) => {
         <button type="submit">Ajouter</button>
       </div>
     </div>
+  ) : (
+    <Navigate to="/login" />
   );
 };
 export default Publish;

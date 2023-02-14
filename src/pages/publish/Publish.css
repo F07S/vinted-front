@@ -53,6 +53,10 @@
   align-items: center;
   margin-bottom: 10px;
 }
+
+.upload-img {
+  width: 400px;
+}
 .publish-page .info-container {
   display: flex;
   justify-content: center;

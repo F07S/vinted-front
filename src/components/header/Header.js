@@ -127,7 +127,7 @@ const Header = ({
         <button
           className="vendre"
           onClick={() => {
-            navigate("/signup");
+            navigate("/login");
           }}
         >
           Vends tes articles
