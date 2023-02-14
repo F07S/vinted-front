@@ -58,7 +58,7 @@ const Signup = ({ handleToken }) => {
         );
       }
       if (error.response.data.message === "Missing parameters") {
-        setErrorMessage("Veuillez remplir tous les champs svp.");
+        setErrorMessage("Veuillez remplir tous les champs s'il vous plaît.");
       }
     }
   };

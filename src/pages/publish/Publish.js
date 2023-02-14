@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
 import axios from "axios";
 
 const Publish = ({ token }) => {
@@ -14,9 +13,9 @@ const Publish = ({ token }) => {
   const [condition, setCondition] = useState("");
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
-  const [exchange, setExchange] = useState(false);
+  // const [exchange, setExchange] = useState(false);
 
-  return token ? (
+  return (
     <div className="publish-page">
       <form
         onSubmit={async (event) => {
@@ -45,7 +44,7 @@ const Publish = ({ token }) => {
             );
             console.log(response);
           } catch (error) {
-            console.log(error.message);
+            console.log(error.response.data);
           }
         }}
         className="form-container"
@@ -160,7 +159,7 @@ const Publish = ({ token }) => {
               type="text"
               placeholder="0,00€"
             />{" "}
-            <div className="check-box-container">
+            {/* <div className="check-box-container">
               <input
                 type="checkbox"
                 checked={exchange}
@@ -169,7 +168,7 @@ const Publish = ({ token }) => {
                 }}
               />
               <span>Je suis intéressé(e) par les échanges</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </form>
@@ -177,8 +176,6 @@ const Publish = ({ token }) => {
         <button type="submit">Ajouter</button>
       </div>
     </div>
-  ) : (
-    <Navigate to="/login" />
   );
 };
 export default Publish;

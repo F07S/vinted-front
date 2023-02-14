@@ -42,7 +42,7 @@ const Login = ({ handleToken }) => {
       console.log(error.response.data);
       console.log(error.response.status);
 
-      if (error.response.data.message === "Unauthorized") {
+      if ((error.response.data.message = "Unauthorized")) {
         setErrorMessage(
           "L'email et/ou le mot de passe sont erronés. Veuillez réessayer"
         );

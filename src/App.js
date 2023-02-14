@@ -6,6 +6,7 @@ import "./pages/signup/Signup.css";
 import "./pages/login/Login.css";
 import "./pages/publish/Publish.css";
 import "./pages/payment/Payment.css";
+import "./components/checkoutform/CheckoutForm.css";
 
 // ROUTER
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -37,8 +38,9 @@ import {
   faArrowUp,
   faArrowDown,
   faEuroSign,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-library.add(faMagnifyingGlass, faArrowUp, faArrowDown, faEuroSign);
+library.add(faMagnifyingGlass, faArrowUp, faArrowDown, faEuroSign, faPlus);
 
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);

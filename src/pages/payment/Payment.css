@@ -3,7 +3,9 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  font-family: "MaisonNeue", sans-serif;
+  background-color: #ebedee;
   gap: 20px;
 }
