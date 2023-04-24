@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const OfferCard = ({ elem, id }) => {
+  console.log(elem);
   return (
     <div className="offer">
       <div className="profile">

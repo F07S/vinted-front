@@ -1,26 +1,28 @@
 /* HOME */
 .page {
-  height: 100vh;
   width: 100vw;
+  height: 100%;
+  font-family: "MaisonNeue", sans-serif;
 }
 .center-page {
-  width: 100vw;
   height: 500px;
-  font-family: "MaisonNeue", sans-serif;
-  object-fit: contain;
+  margin: 0 auto;
   background-position: center;
-  position: absolute;
-  background-image: url("https://static.vinted.com/assets/seller-promotion/gender_test/c/banner-wide-96cebf41372b8de2d64b7e609f0fb2d3c3084f8df0f861fa8b3782231e5c31f8.jpg");
+  background-size: cover;
+  position: relative;
+  background-image: url("https://api.letsdiskuss.com/resources/static/asset/uploads/1650505823637-aviv-rachmadian-7F7kEHj72MQ-unsplash-scaled.jpg");
 }
 .center-container {
-  margin-top: 100px;
+  margin-top: 20px;
 }
 .center-box {
-  width: 320px;
-  height: 170px;
+  width: 20%;
+  height: 30%;
   background-color: white;
-  margin-left: 310px;
+  position: absolute;
   border-radius: 5px;
+  top: 20%;
+  right: 13%;
   padding: 30px;
 }
 
@@ -54,14 +56,15 @@
 }
 
 .container {
-  width: 1240px;
+  /* border: red solid 1px; */
+  width: 1280px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
-  padding-top: 550px;
+  padding-top: 30px;
 }
 
 .offer {

@@ -1,21 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
 
 .header {
-  width: 100vw;
+  width: 1280px;
+  /* border: #ba4242 1px solid; */
+  margin: 0 auto;
   height: 70px;
   display: flex;
   font-family: "MaisonNeue", sans-serif;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   gap: 20px;
 }
 
-.header img {
+.logo {
   width: 80px;
 }
 
 .head-input {
-  width: 630px;
+  width: 400px;
   height: 32px;
   background-color: #f5f6f7;
   border: none;
@@ -98,4 +100,11 @@ button {
   background-color: #ba4242;
   color: white;
   border: none;
+}
+
+.header-avatar {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 50px;
 }

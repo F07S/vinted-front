@@ -29,10 +29,11 @@ const CheckoutForm = ({
       const stripeToken = stripeResponse.token.id;
       //   console.log(stripeToken);
 
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/payment",
-        { token: stripeToken, title: title, amount: total }
-      );
+      const response = await axios.post("http://localhost:3000/payment", {
+        token: stripeToken,
+        title: title,
+        amount: total,
+      });
 
       console.log(response.data);
       //   console.log(total);
@@ -71,7 +72,7 @@ const CheckoutForm = ({
           <p className="base-text">
             Il ne vous reste plus qu'une étape pour vous offrir{" "}
             <strong className="bold">{title.name}</strong>. Vous allez payer{" "}
-            <strong className="bold">{fees}</strong> € (frais de protection et
+            <strong className="bold">{total}</strong> € (frais de protection et
             frais de port inclus).
           </p>
           <div className="cb">

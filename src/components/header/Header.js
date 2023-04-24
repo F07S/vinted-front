@@ -1,6 +1,8 @@
 import "./header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Cookies from "js-cookie";
 
 const Header = ({
@@ -16,11 +18,28 @@ const Header = ({
   priceDesc,
   setPriceDesc,
 }) => {
+  const [data, setData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   const token = Cookies.get("token");
   // const loop = <FontAwesomeIcon icon="magnifying-glass" />;
 
   // Navigate
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/user`);
+        // console.log(response.data.user);
+        setData(response.data.user);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+
+    fetchUsers();
+  }, []);
 
   // onChange Input Handlers
   const handleSearchChange = (event) => {
@@ -38,6 +57,7 @@ const Header = ({
     <div className="header">
       <Link to="/">
         <img
+          className="logo"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Vinted_logo.png/1024px-Vinted_logo.png"
           alt=""
         />
@@ -132,6 +152,22 @@ const Header = ({
         >
           Vends tes articles
         </button>
+      )}
+
+      {token && isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        data.map((user) => {
+          return (
+            token === user.token && (
+              <img
+                className="header-avatar"
+                src={user.account.avatar.secure_url}
+                alt=""
+              />
+            )
+          );
+        })
       )}
     </div>
   );

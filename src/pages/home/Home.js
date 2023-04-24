@@ -17,8 +17,7 @@ const Home = ({ search, priceMin, priceMax, priceAsc, priceDesc }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${priceAsc}${priceDesc}`
-          // add the other queries after ${search} within the url AND in the tab below
+          `http://localhost:3000/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${priceAsc}${priceDesc}`
         );
         console.log(priceAsc);
         console.log(response.data);
@@ -46,7 +45,7 @@ const Home = ({ search, priceMin, priceMax, priceAsc, priceDesc }) => {
                   navigate("/publish");
                 }}
               >
-                Commencer à vendre
+                Commencez à vendre !
               </button>
             ) : (
               <button
@@ -67,8 +66,6 @@ const Home = ({ search, priceMin, priceMax, priceAsc, priceDesc }) => {
         ) : (
           data.offers.map((elem) => {
             const id = elem._id;
-            // console.log(elem);
-            // console.log(elem.owner.account.avatar.url);
             console.log(search);
             return <OfferCard elem={elem} key={elem._id} id={id} />;
           })

@@ -92,7 +92,7 @@ function App() {
             />
           }
         ></Route>
-        <Route path="/offer/:id" element={<Offer />}></Route>
+        <Route path="/offer/:id" element={<Offer token={token} />}></Route>
         <Route
           path="/signup"
           element={<Signup handleToken={handleToken} />}

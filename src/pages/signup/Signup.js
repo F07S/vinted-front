@@ -10,10 +10,10 @@ const Signup = ({ handleToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsLetter] = useState(false);
+  const [picture, setPicture] = useState({});
+  const [displayPic, setDisplayPic] = useState();
 
   const [errorMessage, setErrorMessage] = useState("");
-
-  //   const [data, setData] = useState();
 
   // onChange Input Handlers
   const handleUserNameChange = (event) => {
@@ -32,20 +32,21 @@ const Signup = ({ handleToken }) => {
   const handleSubmit = async () => {
     setErrorMessage("");
     try {
+      const formData = new FormData();
+      formData.append("username", userName);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("newsletter", newsletter);
+      formData.append("picture", picture);
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-        {
-          username: userName,
-          email: email,
-          password: password,
-          newsletter: newsletter,
-        }
+        "http://localhost:3000/signup",
+
+        formData
       );
       console.log(response.data.token);
       const token = response.data.token;
 
       if (token) {
-        // Cookies.set("token", token, { expires: 10 });
         handleToken(token);
         navigate("/");
       }
@@ -94,6 +95,27 @@ const Signup = ({ handleToken }) => {
             onChange={handlePasswordChange}
             value={password}
           />
+          <div className="upload-container-signup">
+            {!displayPic && <label htmlFor="file">Add a profile picture</label>}
+            <input
+              id="file"
+              style={{ display: "none" }}
+              type="file"
+              onChange={(event) => {
+                // const profile = event.target.files[0];
+                setDisplayPic(event.target.files[0]);
+                setPicture(event.target.files[0]);
+                console.log(picture);
+              }}
+            />
+            {displayPic && (
+              <img
+                className="upload-img-signup"
+                src={URL.createObjectURL(displayPic)}
+                alt=""
+              />
+            )}
+          </div>
           <div className="check-container">
             <input
               className="check"

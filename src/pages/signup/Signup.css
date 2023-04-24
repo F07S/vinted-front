@@ -61,3 +61,20 @@
   font-size: 12px;
   color: #42b1ba;
 }
+
+.upload-container-signup {
+  /* border: 1px dotted #f04555; */
+  width: 270px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.upload-img-signup {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50px;
+  object-position: top;
+}

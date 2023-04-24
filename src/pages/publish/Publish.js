@@ -1,12 +1,15 @@
 import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { Dots } from "react-activity";
+import "react-activity/dist/library.css";
+
 const Publish = ({ token }) => {
   // USESTATES
   const [picture, setPicture] = useState();
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
@@ -17,11 +20,18 @@ const Publish = ({ token }) => {
   const [price, setPrice] = useState("");
   const [exchange, setExchange] = useState(false);
 
+  const [uploaded, setUploaded] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  // NAVIGATE
+  const navigate = useNavigate();
+
   return token ? (
     <div className="publish-page">
       <form
         onSubmit={async (event) => {
           event.preventDefault();
+          setSubmitted(true);
           try {
             const formData = new FormData();
             formData.append("title", title);
@@ -35,7 +45,8 @@ const Publish = ({ token }) => {
             formData.append("picture", picture);
 
             const response = await axios.post(
-              "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+              "http://localhost:3000/offer/publish",
+
               formData,
               {
                 headers: {
@@ -44,7 +55,11 @@ const Publish = ({ token }) => {
                 },
               }
             );
-            console.log(response);
+            console.log(response.status);
+            if (response.status === 200) {
+              navigate("/");
+              setUploaded(true);
+            }
           } catch (error) {
             console.log(error.response.data);
           }
@@ -183,7 +198,15 @@ const Publish = ({ token }) => {
           </div>
         </div>
         <div className="button-container">
-          <button type="submit">Ajouter</button>
+          {!submitted ? (
+            <button type="submit"> Ajouter</button>
+          ) : (
+            !uploaded && (
+              <button>
+                <Dots></Dots>
+              </button>
+            )
+          )}
         </div>
       </form>
     </div>
