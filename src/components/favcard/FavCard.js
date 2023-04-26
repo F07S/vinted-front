@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 //COOKIES PACKAGE IMPORT
 import Cookies from "js-cookie";
 
-const OfferCard = ({ elem, id }) => {
+const FavCard = ({ elem, id }) => {
   console.log(elem);
 
   // USER MANAGEMENT & USESTATE
@@ -31,12 +31,12 @@ const OfferCard = ({ elem, id }) => {
         const foundUser = response.data.user.find(
           (user) => user.token === token
         );
-        console.log(foundUser._id);
+        // console.log(foundUser._id);
         setUserId(foundUser._id);
         const favourite = foundUser.favourites.find(
-          (fav) => fav.id === elem._id
+          (fav) => fav.id === elem.id
         );
-        // console.log(favourite);
+        console.log(favourite);
         if (favourite) {
           setSavedFav(true);
         }
@@ -46,7 +46,7 @@ const OfferCard = ({ elem, id }) => {
     };
 
     fetchUser();
-  }, [token, savedFav, elem._id]);
+  }, [token, savedFav, elem.id]);
 
   console.log(elem);
 
@@ -54,22 +54,16 @@ const OfferCard = ({ elem, id }) => {
     <div className="offer">
       <div className="profile">
         <div className="profile-picture">
-          {elem.owner.account.avatar && (
-            <img src={elem.owner.account.avatar.secure_url} alt="" />
-          )}
+          {elem.owner && <img src={elem.profile} alt="" />}
         </div>
-        <span className="offer-info">{elem.owner.account.username}</span>
+        <span className="offer-info">{elem.owner}</span>
       </div>
-      <Link id={elem._id} to={`/offer/${id}`}>
-        <img
-          className="product-image"
-          src={elem.product_image.secure_url}
-          alt=""
-        />
+      <Link id={elem.id} to={`/offer/${id}`}>
+        <img className="product-image" src={elem.image} alt="" />
       </Link>
       <div className="info-container">
         <div className="price-favourite">
-          <span className="price">{elem.product_price} €</span>
+          <span className="price">{elem.price} €</span>
           {savedFav ? (
             <div
               className="fav-btn-red"
@@ -79,13 +73,13 @@ const OfferCard = ({ elem, id }) => {
                     `http://localhost:3000/user/deletefav/${userId}`,
 
                     {
-                      id: elem._id,
-                      owner: elem.owner.account.username,
-                      profile: elem.owner.account.avatar.secure_url,
-                      name: elem.product_name,
-                      image: elem.product_image.secure_url,
-                      price: elem.product_price,
-                      details: elem.product_details,
+                      id: elem.id,
+                      owner: elem.owner,
+                      profile: elem.profile,
+                      name: elem.name,
+                      image: elem.image,
+                      price: elem.price,
+                      details: elem.details,
                     }
                   );
                   console.log(response);
@@ -109,13 +103,13 @@ const OfferCard = ({ elem, id }) => {
                     `http://localhost:3000/user/update/${userId}`,
 
                     {
-                      id: elem._id,
-                      owner: elem.owner.account.username,
-                      profile: elem.owner.account.avatar.secure_url,
-                      name: elem.product_name,
-                      image: elem.product_image.secure_url,
-                      price: elem.product_price,
-                      details: elem.product_details,
+                      id: elem.id,
+                      owner: elem.owner,
+                      profile: elem.profile,
+                      name: elem.name,
+                      image: elem.image,
+                      price: elem.price,
+                      details: elem.details,
                     }
                   );
                   console.log(response);
@@ -133,7 +127,7 @@ const OfferCard = ({ elem, id }) => {
           )}
         </div>
 
-        {elem.product_details.map((info, index) => {
+        {elem.details.map((info, index) => {
           // console.log(info["TAILLE"]);
           return (
             <div key={index}>
@@ -147,4 +141,4 @@ const OfferCard = ({ elem, id }) => {
   );
 };
 
-export default OfferCard;
+export default FavCard;

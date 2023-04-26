@@ -68,29 +68,31 @@ const Publish = ({ token }) => {
       >
         <h1>Vends ton article</h1>
         <div className="upload-container">
-          {!picture && (
-            <label htmlFor="file">
-              {" "}
-              <FontAwesomeIcon icon="plus" /> Ajoute une image
-            </label>
-          )}
+          <div className="upload-dotted-container">
+            {!picture && (
+              <label htmlFor="file">
+                {" "}
+                <FontAwesomeIcon icon="plus" /> Ajoute une image
+              </label>
+            )}
 
-          <input
-            id="file"
-            style={{ display: "none" }}
-            type="file"
-            onChange={(event) => {
-              setPicture(event.target.files[0]);
-            }}
-          />
-
-          {picture && (
-            <img
-              className="upload-img"
-              src={URL.createObjectURL(picture)}
-              alt=""
+            <input
+              id="file"
+              style={{ display: "none" }}
+              type="file"
+              onChange={(event) => {
+                setPicture(event.target.files[0]);
+              }}
             />
-          )}
+
+            {picture && (
+              <img
+                className="upload-img"
+                src={URL.createObjectURL(picture)}
+                alt=""
+              />
+            )}
+          </div>
         </div>
         <div className="info-container">
           <div className="titles">

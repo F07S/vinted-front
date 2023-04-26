@@ -1,6 +1,6 @@
 .payment-page form {
   width: 550px;
-  height: 450px;
+  height: 480px;
   background-color: white;
   padding: 30px;
   margin-top: 50px;
@@ -63,4 +63,12 @@
   align-items: center;
   margin-top: 25px;
   gap: 5px;
+}
+
+.return {
+  background-color: #42b1ba;
+  border: none;
+  color: white;
+  width: 150px;
+  margin-top: 12px;
 }

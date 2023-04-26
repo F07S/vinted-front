@@ -9,20 +9,20 @@
   margin: 0 auto;
   background-position: center;
   background-size: cover;
-  position: relative;
+  /* position: relative; */
   background-image: url("https://api.letsdiskuss.com/resources/static/asset/uploads/1650505823637-aviv-rachmadian-7F7kEHj72MQ-unsplash-scaled.jpg");
 }
 .center-container {
   margin-top: 20px;
 }
 .center-box {
-  width: 20%;
-  height: 30%;
+  width: 320px;
+  height: 20%;
   background-color: white;
   position: absolute;
   border-radius: 5px;
   top: 20%;
-  right: 13%;
+  right: 15%;
   padding: 30px;
 }
 
@@ -79,17 +79,30 @@
   padding-top: 3px;
   padding-bottom: 2px;
 }
-
+.info-container {
+  padding-left: 5px;
+  padding-right: 5px;
+}
 .price {
   font-size: 13px;
   font-family: "MaisonNeue", sans-serif;
   padding-top: 5px;
 }
-
-/* .info-container {
+.price-favourite {
   display: flex;
-  flex-direction: column-reverse;
-} */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fav-btn {
+  color: #c0bfbf;
+  font-size: 15px;
+}
+
+.fav-btn-red {
+  color: #b23333;
+  font-size: 15px;
+}
 
 .hidden {
   display: none;

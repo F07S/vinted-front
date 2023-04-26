@@ -6,13 +6,17 @@ import "./pages/signup/Signup.css";
 import "./pages/login/Login.css";
 import "./pages/publish/Publish.css";
 import "./pages/payment/Payment.css";
+import "./pages/favoris/Favoris.css";
 import "./components/checkoutform/CheckoutForm.css";
 
 // ROUTER
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // USESTATE
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+// AXIOS
+import axios from "axios";
 
 //COOKIES
 import Cookies from "js-cookie";
@@ -24,6 +28,7 @@ import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
 import Publish from "./pages/publish/Publish";
 import Payment from "./pages/payment/Payment";
+import Favoris from "./pages/favoris/Favoris";
 
 // COMPONENTS
 import Header from "./components/header/Header";
@@ -39,8 +44,16 @@ import {
   faArrowDown,
   faEuroSign,
   faPlus,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
-library.add(faMagnifyingGlass, faArrowUp, faArrowDown, faEuroSign, faPlus);
+library.add(
+  faMagnifyingGlass,
+  faArrowUp,
+  faArrowDown,
+  faEuroSign,
+  faPlus,
+  faHeart
+);
 
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
@@ -60,6 +73,28 @@ function App() {
   const [priceMax, setPriceMax] = useState("");
   const [priceAsc, setPriceAsc] = useState("");
   const [priceDesc, setPriceDesc] = useState("");
+  const [fetchRangeValues, setFetchRangeValues] = useState([0, 10000]);
+  const [data, setData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/offers?title=${search}&priceMin=${fetchRangeValues[0]}&priceMax=${fetchRangeValues[1]}&sort=${priceAsc}${priceDesc}`
+        );
+        console.log(priceAsc);
+        console.log(response.data);
+        setData(response.data);
+
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.response);
+        // add error.message above ^
+      }
+    };
+    fetchData();
+  }, [search, priceMin, priceMax, priceAsc, priceDesc, fetchRangeValues]);
 
   return (
     <Router>
@@ -76,21 +111,13 @@ function App() {
         setPriceMax={setPriceMax}
         setPriceAsc={setPriceAsc}
         setPriceDesc={setPriceDesc}
+        setFetchRangeValues={setFetchRangeValues}
+        fetchRangeValues={fetchRangeValues}
       />
       <Routes>
         <Route
           path="/"
-          element={
-            <Home
-              token={token}
-              search={search}
-              setSearch={setSearch}
-              priceMin={priceMin}
-              priceMax={priceMax}
-              priceAsc={priceAsc}
-              priceDesc={priceDesc}
-            />
-          }
+          element={<Home data={data} isLoading={isLoading} />}
         ></Route>
         <Route path="/offer/:id" element={<Offer token={token} />}></Route>
         <Route
@@ -100,6 +127,10 @@ function App() {
         <Route
           path="/login"
           element={<Login handleToken={handleToken} />}
+        ></Route>
+        <Route
+          path="/favoris"
+          element={<Favoris token={token}></Favoris>}
         ></Route>
         <Route path="/publish" element={<Publish token={token} />}></Route>
         <Route path="/payment" element={<Payment />}></Route>

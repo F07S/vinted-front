@@ -52,6 +52,10 @@
   color: #42b1ba;
 }
 
+.login-box .signup-here:hover {
+  cursor: pointer;
+}
+
 .login-box p {
   font-size: 12px;
 }

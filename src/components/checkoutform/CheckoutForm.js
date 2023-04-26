@@ -1,4 +1,5 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 
@@ -15,6 +16,9 @@ const CheckoutForm = ({
 
   const stripe = useStripe();
   const elements = useElements();
+
+  // Navigate
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -82,6 +86,14 @@ const CheckoutForm = ({
             <div className="order-confirmation">
               <p>Paiement validé.</p>
               <p>Merci pour votre achat.</p>
+              <button
+                onClick={() => {
+                  navigate("/");
+                }}
+                className="return"
+              >
+                Retour vers la boutique
+              </button>
             </div>
           ) : (
             <button className="pay-button" disabled={isLoading} type="submit">

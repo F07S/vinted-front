@@ -61,6 +61,9 @@
   font-size: 12px;
   color: #42b1ba;
 }
+.signup-box .connect-here:hover {
+  cursor: pointer;
+}
 
 .upload-container-signup {
   /* border: 1px dotted #f04555; */

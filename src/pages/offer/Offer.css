@@ -1,10 +1,11 @@
 .product-container {
   background-color: #ebedee;
-  height: 100vh;
+  /* height: 100%; */
+  padding-bottom: 300px;
 }
 
 .product-box {
-  width: 1240px;
+  width: 1070px;
   display: flex;
   margin: 0 auto;
   justify-content: space-around;
