@@ -106,7 +106,7 @@ const Publish = ({ token }) => {
                 setTitle(event.target.value);
               }}
               type="text"
-              placeholder="ex: Chemise Ralph Lauren"
+              placeholder="ex: Pull Ralph Lauren"
             />
 
             <input
@@ -115,7 +115,7 @@ const Publish = ({ token }) => {
                 setDescription(event.target.value);
               }}
               type="text"
-              placeholder="ex: Très peu portée"
+              placeholder="ex: porté quelques fois, taille correctement..."
             />
           </div>
         </div>
@@ -152,7 +152,7 @@ const Publish = ({ token }) => {
                 setColor(event.target.value);
               }}
               type="text"
-              placeholder="ex: Bleue"
+              placeholder="ex: Bleu"
             />
 
             <input
@@ -161,7 +161,7 @@ const Publish = ({ token }) => {
                 setCondition(event.target.value);
               }}
               type="text"
-              placeholder="ex: Neuve sans étiquettes"
+              placeholder="ex: Neuf sans étiquettes"
             />
 
             <input
@@ -195,7 +195,9 @@ const Publish = ({ token }) => {
                   setExchange(!exchange);
                 }}
               />
-              <span>Je suis intéressé(e) par les échanges</span>
+              <span className="exchange">
+                Je suis intéressé(e) par les échanges
+              </span>
             </div>
           </div>
         </div>

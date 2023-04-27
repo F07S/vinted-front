@@ -1,19 +1,52 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
 
-.header {
+/* GENERAL */
+/* ######################################### */
+.header-container {
   width: 100vw;
   border-bottom: #c1baba 1px solid;
+}
+
+.header {
+  max-width: 1070px;
   margin: 0 auto;
   height: 80px;
   display: flex;
   font-family: "MaisonNeue", sans-serif;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO - SEARCH - FILTER SECTION */
+/* ######################################### */
+.header-form {
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 25px;
+  gap: 15px;
+}
+
+.header-form-responsive {
+  display: none;
 }
 
 .logo {
   width: 80px;
+  margin-right: 25px;
+}
+
+.logo-resp {
+  display: none;
+}
+
+.logo-v {
+  display: none;
+}
+.search-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
 }
 
 .head-input {
@@ -23,21 +56,75 @@
   border: none;
   border-radius: 5px;
   outline: none;
-  margin-right: 20px;
   caret-color: #2a7883;
   color: #2a7883;
   padding-left: 10px;
   font-size: 14px;
 }
-.header-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 input::placeholder {
   font-family: "MaisonNeue", sans-serif;
   font-size: 14px;
+}
+
+/* DROP DOWN FILTER */
+/* ######################################### */
+.dd-btn {
+  background-color: white;
+  color: #42b1ba;
+  border: 1px solid #42b1ba;
+}
+
+.dd-btn:hover {
+  background-color: #f5f6f7;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  width: 200px;
+  background-color: white;
+  border: 1px solid #42b1ba;
+  position: absolute;
+  z-index: 1;
+  margin-top: 15px;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.dd-item {
+  padding: 10px;
+  border-radius: 5px;
+}
+.dd-item:hover {
+  background-color: #fbfbfb;
+  cursor: pointer;
+}
+.dd-item:first-child {
+  border-bottom: 1px solid #ebedee;
+}
+
+.hide {
+  display: none;
+}
+
+/* BUTTON - PROFILE CONTAINER */
+/* ######################################### */
+.header-btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.dots-activity {
+  color: #42b1ba;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
 }
 
 button {
@@ -64,8 +151,11 @@ button {
   border: none;
 }
 
+.vendre-resp {
+  display: none;
+}
+
 .favouris-btn {
-  border: none;
   background-color: white;
   width: 35px;
   height: 35px;
@@ -84,6 +174,12 @@ button {
   color: #ba4242;
 }
 
+.sign-up-btn-resp {
+  display: none;
+}
+.disc-btn-resp {
+  display: none;
+}
 .deconnect {
   background-color: #ba4242;
   color: white;
@@ -102,43 +198,157 @@ button {
   border-radius: 50px;
 }
 
-/* DROP DOWN FILTER */
-.dd-btn {
-  background-color: white;
-  color: #42b1ba;
-  border: 1px solid #42b1ba;
-  margin-left: 15px;
+/* *****************************************/
+/* MEDIA QUERY */
+/* *****************************************/
+
+/* 1024 px -  */
+/* *****************************************/
+
+@media (max-width: 1024px) {
+  /* ############################################################################################## */
+  /* GENERAL */
+  /* ############################################################################################## */
+
+  .header-form {
+    display: none;
+  }
+
+  .header {
+    max-width: 900px;
+    height: 120px;
+    padding: 10px;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .header-btn-container {
+    width: 100%;
+  }
+
+  .header-form-responsive {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+    padding-bottom: 25px;
+    padding-top: 10px;
+    border-top: #c1baba 1px solid;
+  }
+  .search-filter {
+    display: none;
+  }
+  .logo-resp {
+    display: inline;
+    width: 80px;
+    margin-right: 25px;
+  }
+
+  .dropdown-menu {
+    width: 115px;
+    font-size: 12px;
+  }
 }
 
-.dd-btn:hover {
-  background-color: #f5f6f7;
-  cursor: pointer;
+/* *****************************************/
+/* MEDIA QUERY */
+/* *****************************************/
+
+/* 768 px -  */
+/* *****************************************/
+
+@media (max-width: 768px) {
+  /* ############################################################################################## */
+  /* GENERAL */
+  /* ############################################################################################## */
+  .header {
+    max-width: 700px;
+    padding: 15px;
+  }
+
+  .header-form-responsive {
+    padding-bottom: 15px;
+  }
+
+  .logo-resp {
+    display: none;
+  }
+  .logo-v {
+    display: inline;
+  }
+  .sign-up-btn {
+    display: none;
+  }
+  .sign-up-btn-resp {
+    display: inline;
+  }
+
+  .sign-up-btn-resp button {
+    border: none;
+    width: 35px;
+    height: 35px;
+    font-size: 22px;
+  }
+  .disc-btn {
+    display: none;
+  }
+  .disc-btn-resp {
+    display: inline;
+  }
+  .favouris-btn {
+    border-radius: 5px;
+    border: none;
+    font-size: 22px;
+  }
+  .disc-btn-resp button {
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    font-size: 22px;
+    color: #42b1ba;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .disc-btn-resp button:hover {
+    color: #42b1ba;
+    background-color: #fbfbfb;
+    cursor: pointer;
+  }
 }
 
-.dropdown-menu {
-  width: 200px;
-  background-color: white;
-  border: 1px solid #42b1ba;
-  position: absolute;
-  z-index: 1;
-  margin-top: 15px;
-  margin-left: 15px;
-  font-size: 15px;
-  border-radius: 5px;
-}
+/* 414 px -  */
+/* *****************************************/
 
-.dd-item {
-  padding: 10px;
-  border-radius: 5px;
-}
-.dd-item:hover {
-  background-color: #fbfbfb;
-  cursor: pointer;
-}
-.dd-item:first-child {
-  border-bottom: 1px solid #ebedee;
-}
+@media (max-width: 414px) {
+  /* ############################################################################################## */
+  /* GENERAL */
+  /* ############################################################################################## */
+  .header {
+    max-width: 300px;
+    height: 200px;
+  }
 
-.hide {
-  display: none;
+  .header-form-responsive {
+    width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+  }
+
+  .logo-v {
+    margin: 0px;
+    padding-right: 0px;
+  }
+  .vendre {
+    display: none;
+  }
+  .vendre-resp {
+    display: inline;
+    width: 50px;
+    background-color: #42b1ba;
+    color: white;
+    border: none;
+  }
 }

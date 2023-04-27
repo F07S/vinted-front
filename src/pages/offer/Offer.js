@@ -75,13 +75,11 @@ const Offer = ({ token }) => {
                   onClick={() => {
                     const name = data.product_name;
                     const price = data.product_price;
-                    {
-                      token
-                        ? navigate("/payment", {
-                            state: { title: { name }, price: { price } },
-                          })
-                        : navigate("/login");
-                    }
+                    token
+                      ? navigate("/payment", {
+                          state: { title: { name }, price: { price } },
+                        })
+                      : navigate("/login");
                   }}
                 >
                   Acheter

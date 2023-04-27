@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
+// ACTIVITY INDICATOR LIBRARY IMPORT
+import Dots from "react-activity/dist/Dots";
+import "react-activity/dist/library.css";
+
 //Component
 import OfferCard from "../../components/offercard/OfferCard";
 
@@ -15,31 +19,22 @@ const Home = ({ data, isLoading }) => {
         <div className="center-container">
           <div className="center-box">
             <h3>Prêts à faire du tri dans vos placards ?</h3>
-            {token ? (
+            <div>
               <button
                 className="center-button"
                 onClick={() => {
-                  navigate("/publish");
+                  token ? navigate("/publish") : navigate("/signup");
                 }}
               >
                 Commencez à vendre !
               </button>
-            ) : (
-              <button
-                className="center-button"
-                onClick={() => {
-                  navigate("/signup");
-                }}
-              >
-                Commencer à vendre
-              </button>
-            )}
+            </div>
           </div>
         </div>
       </div>
       <div className="container">
         {isLoading === true ? (
-          <p>Loading...</p>
+          <Dots className="dots-activity"></Dots>
         ) : (
           data.offers.map((elem) => {
             const id = elem._id;

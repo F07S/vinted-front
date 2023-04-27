@@ -3,7 +3,11 @@ import axios from "axios";
 
 // REACT ELEMENTS IMPORT
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+
+// ACTIVITY INDICATOR LIBRARY IMPORT
+import Dots from "react-activity/dist/Dots";
+import "react-activity/dist/library.css";
 
 //COOKIES PACKAGE IMPORT
 import Cookies from "js-cookie";
@@ -16,6 +20,7 @@ const Favoris = () => {
 
   // USER DATA STATES
   const [userId, setUserId] = useState();
+  console.log(userId);
 
   // USER TOKEN
   const token = Cookies.get("token");
@@ -51,7 +56,7 @@ const Favoris = () => {
       <h1>Articles favoris</h1>
       <section className="fav-container">
         {isLoading ? (
-          <p>Loading...</p>
+          <Dots className="dots-activity"></Dots>
         ) : data.favourites.length === 0 ? (
           <p className="no-fav-msg">
             Vous n'avez pas encore ajouté d'articles à vos favoris.

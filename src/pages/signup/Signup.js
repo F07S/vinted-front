@@ -49,6 +49,7 @@ const Signup = ({ handleToken }) => {
       if (token) {
         handleToken(token);
         navigate("/");
+        window.location.reload();
       }
     } catch (error) {
       console.log(error.response.data);

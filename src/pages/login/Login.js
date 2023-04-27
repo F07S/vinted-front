@@ -37,7 +37,7 @@ const Login = ({ handleToken }) => {
       if (token) {
         // Cookies.set("token", token, { expires: 10 });
         handleToken(token);
-        navigate("/publish");
+        navigate("/");
       }
     } catch (error) {
       console.log(error.response.data);

@@ -45,6 +45,8 @@ import {
   faEuroSign,
   faPlus,
   faHeart,
+  faUser,
+  faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 library.add(
   faMagnifyingGlass,
@@ -52,7 +54,9 @@ library.add(
   faArrowDown,
   faEuroSign,
   faPlus,
-  faHeart
+  faHeart,
+  faUser,
+  faRightFromBracket
 );
 
 function App() {

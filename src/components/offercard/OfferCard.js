@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const OfferCard = ({ elem, id }) => {
-  console.log(elem);
+  // console.log(elem);
 
   // USER MANAGEMENT & USESTATE
   const [userId, setUserId] = useState();
@@ -31,7 +31,7 @@ const OfferCard = ({ elem, id }) => {
         const foundUser = response.data.user.find(
           (user) => user.token === token
         );
-        console.log(foundUser._id);
+        // console.log(foundUser._id);
         setUserId(foundUser._id);
         const favourite = foundUser.favourites.find(
           (fav) => fav.id === elem._id
@@ -47,8 +47,6 @@ const OfferCard = ({ elem, id }) => {
 
     fetchUser();
   }, [token, savedFav, elem._id]);
-
-  console.log(elem);
 
   return (
     <div className="offer">
