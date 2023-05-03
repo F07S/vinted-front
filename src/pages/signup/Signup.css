@@ -1,6 +1,6 @@
 .signup-container {
   width: 100vw;
-  height: 100vh;
+  height: 1000px;
   display: flex;
   justify-content: center;
   font-family: "MaisonNeue", sans-serif;
@@ -80,4 +80,24 @@
   object-fit: cover;
   border-radius: 50px;
   object-position: top;
+}
+
+@media (max-width: 280px) {
+  /* ############################################################################################## */
+  /* GENERAL */
+  /* ############################################################################################## */
+  .signup-box {
+    max-width: 230px;
+  }
+
+  .signup-box .input-box {
+    max-width: 230px;
+  }
+
+  .signup-box button {
+    max-width: 230px;
+  }
+  .check-container {
+    font-size: 12px;
+  }
 }

@@ -115,7 +115,7 @@ const Publish = ({ token }) => {
                 setDescription(event.target.value);
               }}
               type="text"
-              placeholder="ex: porté quelques fois, taille correctement..."
+              placeholder="ex: porté quelques fois"
             />
           </div>
         </div>
