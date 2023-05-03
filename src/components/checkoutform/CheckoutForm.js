@@ -33,15 +33,17 @@ const CheckoutForm = ({
       const stripeToken = stripeResponse.token.id;
       //   console.log(stripeToken);
 
-      const response = await axios.post("http://localhost:3000/payment", {
-        token: stripeToken,
-        title: title,
-        amount: total,
-      });
+      const response = await axios.post(
+        "https://site--vinted-backend--phfc9s47kbj5.code.run/payment",
+        // "http://localhost:3000/payment"
+        {
+          token: stripeToken,
+          title: title,
+          amount: total,
+        }
+      );
 
       console.log(response.data);
-      //   console.log(total);
-      //   console.log(title);
 
       if ((response.data = "succeeded")) {
         setIsLoading(false);

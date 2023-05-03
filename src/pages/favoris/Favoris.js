@@ -32,7 +32,10 @@ const Favoris = () => {
   useEffect(() => {
     const fetchFavourites = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/user`);
+        const response = await axios.get(
+          `https://site--vinted-backend--phfc9s47kbj5.code.run/user`
+          // `http://localhost:3000/user`
+        );
         // console.log(response.data);
         const foundUser = response.data.user.find(
           (user) => user.token === token

@@ -39,7 +39,8 @@ const Signup = ({ handleToken }) => {
       formData.append("newsletter", newsletter);
       formData.append("picture", picture);
       const response = await axios.post(
-        "http://localhost:3000/signup",
+        "https://site--vinted-backend--phfc9s47kbj5.code.run/signup",
+        // "http://localhost:3000/signup",
 
         formData
       );

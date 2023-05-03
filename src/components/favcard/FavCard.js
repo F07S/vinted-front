@@ -27,7 +27,10 @@ const FavCard = ({ elem, id }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/user`);
+        const response = await axios.get(
+          `https://site--vinted-backend--phfc9s47kbj5.code.run/user`
+          // `http://localhost:3000/user`
+        );
         const foundUser = response.data.user.find(
           (user) => user.token === token
         );
@@ -70,8 +73,8 @@ const FavCard = ({ elem, id }) => {
               onClick={async () => {
                 try {
                   const response = await axios.put(
-                    `http://localhost:3000/user/deletefav/${userId}`,
-
+                    `https://site--vinted-backend--phfc9s47kbj5.code.run/user/deletefav/${userId}`,
+                    // `http://localhost:3000/user/deletefav/${userId}`
                     {
                       id: elem.id,
                       owner: elem.owner,
@@ -100,8 +103,8 @@ const FavCard = ({ elem, id }) => {
               onClick={async () => {
                 try {
                   const response = await axios.put(
-                    `http://localhost:3000/user/update/${userId}`,
-
+                    `https://site--vinted-backend--phfc9s47kbj5.code.run/user/update/${userId}`,
+                    // `http://localhost:3000/user/update/${userId}`
                     {
                       id: elem.id,
                       owner: elem.owner,

@@ -85,7 +85,8 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/offers?title=${search}&priceMin=${fetchRangeValues[0]}&priceMax=${fetchRangeValues[1]}&sort=${priceAsc}${priceDesc}`
+          `https://site--vinted-backend--phfc9s47kbj5.code.run/offers?title=${search}&priceMin=${fetchRangeValues[0]}&priceMax=${fetchRangeValues[1]}&sort=${priceAsc}${priceDesc}`
+          // `http://localhost:3000/offers?title=${search}&priceMin=${fetchRangeValues[0]}&priceMax=${fetchRangeValues[1]}&sort=${priceAsc}${priceDesc}`
         );
         console.log(priceAsc);
         console.log(response.data);
